@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 route::get('admin',[CustomFeatureController::class,'defaultIndex'])->name('admin.index');
 
-
+// Settings routes
 route::namespace('Backend')->group(function (){
     route::prefix('admin/settings')->group(function (){
         route::get('/',[CustomFeatureController::class,'settingsIndex'])->name('settings.index');
@@ -31,6 +31,7 @@ route::namespace('Backend')->group(function (){
 });
 
 
+// Blogs routes
 route::prefix('admin')->group(function (){
     route::post('sortable',[BlogController::class,'sortable'])->name('blog.sortable');
     route::resource('blog',BlogController::class);

@@ -14,6 +14,7 @@ class BlogController extends Controller
 
     public function __construct(){
 
+        // Blue line on left side in app
         $this->page['blueBar'] = 'blog.index';
 
     }

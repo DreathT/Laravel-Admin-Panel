@@ -10,7 +10,6 @@
                 <form action="{{route('blog.store')}}" method="post"
                       enctype="multipart/form-data">
                     @csrf
-
                     <div class="form-group">
                         <label>Choose picture</label>
                         <div class="row">

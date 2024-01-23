@@ -25,6 +25,7 @@ class SettingsController extends Controller
         return view('backend.settings.index',$this -> page,compact('data'));
     }
 
+    // sort algorithm
     public function sortable() {
 
         foreach ($_POST['item'] as $key => $value) {
@@ -37,6 +38,7 @@ class SettingsController extends Controller
 
     }
 
+    // delete the setting
     public function destroy($id) {
 
         $settings = Settings::find($id);
@@ -46,6 +48,7 @@ class SettingsController extends Controller
         return back() -> with("error", "Process Failed");
     }
 
+    // edit the setting
     public function edit($id) {
 
         $settings = Settings::where('id',$id) -> first();
@@ -54,6 +57,7 @@ class SettingsController extends Controller
 
     }
 
+    // updade the setting
     public function update(Request $request, $id) {
 
         if($request -> hasFile('settings_value')){
@@ -62,6 +66,7 @@ class SettingsController extends Controller
                 'settings_value' => 'required|image|mimes:jpg,jpeg,png|max:2048'
             ]);
 
+            // set unique file name
             $file_name = uniqid().'.'.$request -> settings_value -> getClientOriginalExtension();
             $request -> settings_value -> move(public_path('images/settings'),$file_name);
             $request -> settings_value = $file_name;
@@ -74,6 +79,7 @@ class SettingsController extends Controller
             ]
         );
 
+        // check old file and change with it
         if($settings){
             $path = 'images/settings/'.$request -> old_file;
             if(file_exists($path)){

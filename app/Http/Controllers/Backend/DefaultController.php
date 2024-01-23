@@ -12,10 +12,12 @@ class DefaultController extends Controller
 
     public function __construct(){
 
+        // Blue bar on left side in app
         $this->page['blueBar'] = 'admin.index';
 
     }
 
+    // route to default index page
     public function index(){
 
         return view('backend.default.index', $this -> page);

@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    // Settings Table Migrations
     public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
